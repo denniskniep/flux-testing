@@ -1,0 +1,29 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: demo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world
+  namespace: demo
+  labels:
+    app: hello-world
+spec:
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: hello-world
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - name: hello-world
+        image: kennethreitz/httpbin
+        imagePullPolicy: Always
+        ports:
+        - name: web
+          containerPort: 80
