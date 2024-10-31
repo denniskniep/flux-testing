@@ -1,7 +1,14 @@
+Install current Flux Version
+```
+curl -s https://fluxcd.io/install.sh | sudo FLUX_VERSION=2.4.0 bash
+```
+
+Create Cluster
 ```
 kind create cluster -n linage-test
 ```
 
+Bootstrap Flux
 ```
 export GITHUB_TOKEN=<my-token>
 
